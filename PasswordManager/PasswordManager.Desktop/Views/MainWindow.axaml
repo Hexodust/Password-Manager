@@ -26,6 +26,9 @@
             <TextBox Grid.Row="1" Grid.Column="1" Margin="0 5" Name="Fahrenheit" IsReadOnly="True"/>
             <Button Grid.Row="2" Grid.Column="1" Click="Button_OnClick">Calculate</Button>
         </Grid>
+        <Label Grid.Row="1" VerticalAlignment="Center">Row 1</Label>
+        <Label Grid.Row="2" VerticalAlignment="Center">Row 2</Label>
+        <Label Grid.Row="3" VerticalAlignment="Center">Row 3</Label>
     </Grid>
     
 </Window>
