@@ -16,14 +16,15 @@ public partial class MainWindowViewModel : ViewModelBase
     [RelayCommand(CanExecute = nameof(CanAddItem))]
     private void AddItem()
     {
-        TodoItems.Add(new TodoItemViewModel(){Content = NewItemContent});
+        TodoItems.Add(new TodoItemViewModel(RemoveItem)
+        {
+            Content = NewItemContent
+        });
         NewItemContent = null;
     }
 
-    [RelayCommand]
-    private void RemoveItem(TodoItemViewModel item)
+    internal void RemoveItem(TodoItemViewModel item)
     {
         TodoItems.Remove(item);
     }
-
 }

@@ -1,0 +1,28 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="PasswordManager.Desktop.Views.TodoItemView"
+        xmlns:vm="clr-namespace:PasswordManager.Desktop.ViewModels"
+        x:DataType="vm:TodoItemViewModel">
+    <Design.PreviewWith>
+        <vm:TodoItemViewModel />
+    </Design.PreviewWith>
+    
+    <StackPanel Orientation="Horizontal" Margin="5">
+        <CheckBox Content="{Binding Content}"
+                  IsChecked="{Binding IsChecked}"
+                  VerticalAlignment="Center"
+                  Margin="0 0 10 0 "/>
+        <Button Classes="LogoDeleteIcon"
+                Command="{Binding RemoveCommand}"
+                CommandParameter="{Binding .}">
+            <!-- Delete -->
+            <!-- <Image Source="{DynamicResource DeleteIconPng}" Width="24" Height="24"></Image> -->
+            <!-- <Svg Path="avares://PasswordManager.Desktop/Assets/icons8-trash.svg"></Svg> -->
+            <!-- <Image Width="24" Height="24"> -->
+            <!--     <Image.Source> -->
+            <!--         <SvgImage Source="{DynamicResource DeleteIconSvg}"></SvgImage>         -->
+            <!--     </Image.Source> -->
+            <!-- </Image> -->
+        </Button>
+    </StackPanel>
+</UserControl>
