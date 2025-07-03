@@ -29,11 +29,11 @@ public static class TodoListFileService
             await using var stream = File.OpenRead(JsonFilename);
             return await JsonSerializer.DeserializeAsync<IEnumerable<TodoItem>>(stream) ?? [];
         }
-        catch (FileNotFoundException e)
+        catch (FileNotFoundException)
         {
             return [];
         }
-        catch (DirectoryNotFoundException e)
+        catch (DirectoryNotFoundException)
         {
             return [];
         }

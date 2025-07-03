@@ -6,6 +6,12 @@
     <Design.PreviewWith>
         <vm:TodoItemViewModel />
     </Design.PreviewWith>
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:TodoItemViewModel/>
+        
+    </Design.DataContext>
     
     <StackPanel Orientation="Horizontal" Margin="5">
         <CheckBox Content="{Binding Content}"

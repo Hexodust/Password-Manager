@@ -2,9 +2,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Data.Core.Plugins;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using DynamicData;
+using Microsoft.Extensions.DependencyInjection;
+using PasswordManager.Desktop.DiRegistration;
 using PasswordManager.Desktop.Services;
 using PasswordManager.Desktop.ViewModels;
 using PasswordManager.Desktop.Views;
@@ -14,7 +17,7 @@ namespace PasswordManager.Desktop;
 public partial class App : Application
 {
     private bool _canClose = false;
-    private readonly MainWindowViewModel _mainWindowViewModel = new();
+    private MainWindowViewModel _mainWindowViewModel;
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -22,6 +25,16 @@ public partial class App : Application
 
     public override async void OnFrameworkInitializationCompleted()
     {
+        // Remove Avalonia validations
+        // We use validations from CommunityToolkit
+        BindingPlugins.DataValidators.RemoveAt(0);
+        
+        // Register services
+        var services = new ServiceCollection();
+        services.RegisterCommonServices();
+        var provider = services.BuildServiceProvider();
+        _mainWindowViewModel = provider.GetRequiredService<MainWindowViewModel>();
+        
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             desktop.MainWindow = new MainWindow

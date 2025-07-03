@@ -3,11 +3,16 @@
         xmlns:vm="using:PasswordManager.Desktop.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:login="clr-namespace:PasswordManager.Desktop.Views.Login"
+        xmlns:views="clr-namespace:PasswordManager.Desktop.Views"
         mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
         x:Class="PasswordManager.Desktop.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="PasswordManager.Desktop">
+        <!-- TransparencyLevelHint="AcrylicBlur" -->
+        <!-- Background="Transparent" -->
+        <!-- ExtendClientAreaToDecorationsHint="True"> -->
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -15,29 +20,52 @@
         <vm:MainWindowViewModel/>
         
     </Design.DataContext>
-    <Grid RowDefinitions="Auto, *, Auto"
-          x:Name="Root">
-        <TextBlock Classes="h1" Text="My ToDo-List"/>
-        
-        <ScrollViewer Grid.Row="1">
-            <ItemsControl ItemsSource="{Binding TodoItems}">
-                
-            </ItemsControl>
-        </ScrollViewer>
-        
-        <TextBox Grid.Row="2"
-                 Text="{Binding NewItemContent}"
-                 Watermark="Add a new Item">
-            <TextBox.InnerRightContent>
-                <Button Classes="LogoAcceptIcon" Theme="{StaticResource AcceptIcon}"
-                        Command="{Binding AddItemCommand}">
-                    Add
-                </Button>
-            </TextBox.InnerRightContent>
-            <TextBox.KeyBindings>
-                <KeyBinding Command="{Binding AddItemCommand}" Gesture="Enter"/>
-            </TextBox.KeyBindings>
-        </TextBox>
-    </Grid>
     
+    <Grid ColumnDefinitions="Auto, *">
+        
+        <Grid Grid.Column="0">
+            <StackPanel>
+                <Label>My Passwords</Label>
+                
+                <StackPanel Orientation="Horizontal">
+                    <Svg Path="avares://PasswordManager.Desktop/Assets/Profile.svg"
+                         Width="24"
+                         Height="24"/>
+                    <Label>Profile</Label>
+                </StackPanel>
+                
+            </StackPanel>
+            
+        </Grid>
+        <Grid Grid.Column="1" RowDefinitions="Auto, *, Auto"
+              x:Name="Root">
+        
+            <TextBox Grid.Row="0"
+                     Margin="0 0 0 5"
+                     Text="{Binding NewItemContent}"
+                     Watermark="Add a new Item">
+                <TextBox.InnerRightContent>
+                    <Button Classes="LogoAcceptIcon" Theme="{StaticResource AcceptIcon}"
+                            Command="{Binding AddItemCommand}">
+                        New Item
+                    </Button>
+                </TextBox.InnerRightContent>
+                <TextBox.KeyBindings>
+                    <KeyBinding Command="{Binding AddItemCommand}" Gesture="Enter"/>
+                </TextBox.KeyBindings>
+            </TextBox>
+            
+            <Grid Grid.Row="1" ColumnDefinitions="*, *">
+                <ScrollViewer Grid.Column="0">
+                    <ItemsControl ItemsSource="{Binding TodoItems}">
+                
+                    </ItemsControl>
+                </ScrollViewer>
+            
+                <Panel Grid.Column="1">
+                    <login:LoginCreate/>
+                </Panel>
+            </Grid>
+        </Grid>
+    </Grid>    
 </Window>
