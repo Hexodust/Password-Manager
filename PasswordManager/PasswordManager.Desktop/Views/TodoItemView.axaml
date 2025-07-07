@@ -1,0 +1,18 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:PasswordManager.Desktop.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="PasswordManager.Desktop.Views.TodoItemView"
+             x:DataType="viewModels:TodoItemViewModel">
+    <Grid ColumnDefinitions="Auto, Auto">
+        <CheckBox Grid.Column="0" Content="{Binding Content}"
+                  IsChecked="{Binding IsChecked}"/>
+        <Button Grid.Column="1" Command="{Binding RemoveCommand}">
+            <Image Source="avares://PasswordManager.Desktop/Assets/icons8-delete-64.png"
+                   Width="24"
+                   Height="24"></Image>
+        </Button>
+    </Grid>
+</UserControl>

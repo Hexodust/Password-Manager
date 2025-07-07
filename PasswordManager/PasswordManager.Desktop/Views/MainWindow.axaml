@@ -15,20 +15,28 @@
         <vm:MainWindowViewModel/>
         
     </Design.DataContext>
-    <Grid RowDefinitions="Auto, Auto, *">
-        <Grid Grid.Row="0"
-              ShowGridLines="False"
-              ColumnDefinitions="120, 100"
-              RowDefinitions="Auto, Auto, Auto">
-            <Label Grid.Row="0" Grid.Column="0" Margin="10">Celsius</Label>
-            <TextBox Grid.Row="0" Grid.Column="1" Margin="0 5" Name="Celsius" TextChanged="Celsius_OnChange"/>
-            <Label Grid.Row="1" Grid.Column="0" Margin="10">Fahrenheit</Label>
-            <TextBox Grid.Row="1" Grid.Column="1" Margin="0 5" Name="Fahrenheit" IsReadOnly="True"/>
-            <Button Grid.Row="2" Grid.Column="1" Click="Button_OnClick">Calculate</Button>
-        </Grid>
-        <Label Grid.Row="1" VerticalAlignment="Center">Row 1</Label>
-        <Label Grid.Row="2" VerticalAlignment="Center">Row 2</Label>
-        <Label Grid.Row="3" VerticalAlignment="Center">Row 3</Label>
+    <Grid RowDefinitions="Auto, *, Auto">
+        <TextBlock Grid.Row="0"
+                   Classes="h1"
+                   Text="My Todo-List"/>
+        <ScrollViewer Grid.Row="1">
+            <ItemsControl ItemsSource="{Binding TodoItems}"/>
+        </ScrollViewer>
+        <TextBox Grid.Row="2"
+                 Text="{Binding NewItemContent}"
+                 Watermark="Add a new Item">
+            <TextBox.InnerRightContent>
+                <Button Command="{Binding AddItemCommand}">
+                    <Image Source="avares://PasswordManager.Desktop/Assets/icons8-accept-64.png"
+                           Width="24"
+                           Height="24"></Image>
+                </Button>
+            </TextBox.InnerRightContent>
+            <TextBox.KeyBindings>
+                <KeyBinding Command="{Binding AddItemCommand}"
+                            Gesture="Enter"/>
+            </TextBox.KeyBindings>
+        </TextBox>
     </Grid>
     
 </Window>

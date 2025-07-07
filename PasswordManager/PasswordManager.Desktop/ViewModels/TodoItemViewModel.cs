@@ -1,4 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using PasswordManager.Desktop.Models;
 
 namespace PasswordManager.Desktop.ViewModels;
@@ -9,6 +11,8 @@ public partial class TodoItemViewModel : ViewModelBase
     private bool _isChecked;
     [ObservableProperty]
     private string? _content;
+
+    public Action<TodoItemViewModel> RemoveItem { get; init; }
     
     public TodoItemViewModel()
     {
@@ -26,6 +30,12 @@ public partial class TodoItemViewModel : ViewModelBase
         IsChecked = IsChecked,
         Content = Content
     };
+
+    [RelayCommand]
+    private void Remove()
+    {
+        RemoveItem(this);
+    }
 }
 
 // interface IPerson

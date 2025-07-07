@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="PasswordManager.Desktop.App"
              xmlns:local="using:PasswordManager.Desktop"
-             RequestedThemeVariant="Default">
+             RequestedThemeVariant="Light">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
     <Application.DataTemplates>
@@ -11,5 +11,15 @@
   
     <Application.Styles>
         <FluentTheme />
+        
+        <Style Selector="TextBlock.h1">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        
+        <Style Selector="CheckBox:pointerover /template/ Grid">
+            <Setter Property="Background" Value="{DynamicResource SystemAccentColorLight3}"></Setter>
+        </Style>
     </Application.Styles>
 </Application>
