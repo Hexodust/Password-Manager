@@ -6,10 +6,13 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="PasswordManager.Desktop.Views.TodoItemView"
              x:DataType="viewModels:TodoItemViewModel">
-    <Grid ColumnDefinitions="Auto, Auto">
-        <CheckBox Grid.Column="0" Content="{Binding Content}"
-                  IsChecked="{Binding IsChecked}"/>
-        <Button Grid.Column="1" Command="{Binding RemoveCommand}">
+    
+    <!-- ToDo: Afisat Titlul obicetelor mare, iar user ca sub-text sub titlu, butonul sa fie la dreapta de ambele -->
+    
+    <Grid ColumnDefinitions="Auto, Auto, Auto">
+        <TextBlock Grid.Column="0" Text="{Binding Title}"/>
+        <TextBlock Grid.Column="1" Text="{Binding Username}"/>
+        <Button Grid.Column="2" Command="{Binding RemoveCommand}">
             <Image Source="avares://PasswordManager.Desktop/Assets/icons8-delete-64.png"
                    Width="24"
                    Height="24"></Image>

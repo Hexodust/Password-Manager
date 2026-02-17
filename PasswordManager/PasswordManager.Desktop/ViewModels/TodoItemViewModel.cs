@@ -7,10 +7,15 @@ namespace PasswordManager.Desktop.ViewModels;
 
 public partial class TodoItemViewModel : ViewModelBase
 {
+    // Username; Pass; Website/App; Title
     [ObservableProperty]
-    private bool _isChecked;
+    private string? _username;
     [ObservableProperty]
-    private string? _content;
+    private string _password;
+    [ObservableProperty]
+    private string? _application;
+    [ObservableProperty]
+    private string _title;
 
     public Action<TodoItemViewModel> RemoveItem { get; init; }
     
@@ -21,14 +26,19 @@ public partial class TodoItemViewModel : ViewModelBase
 
     public TodoItemViewModel(TodoItem todoItem)
     {
-        IsChecked = todoItem.IsChecked;
-        Content = todoItem.Content;
+        Username = todoItem.Username;
+        Password = todoItem.Password;
+        Application = todoItem.Application;
+        Title = todoItem.Title;
+
     }
 
     public TodoItem GetTodoItem() => new()
     {
-        IsChecked = IsChecked,
-        Content = Content
+        Username = Username,
+        Password = Password,
+        Application = Application,
+        Title = Title
     };
 
     [RelayCommand]

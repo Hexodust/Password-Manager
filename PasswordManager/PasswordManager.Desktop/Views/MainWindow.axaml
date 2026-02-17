@@ -22,21 +22,45 @@
         <ScrollViewer Grid.Row="1">
             <ItemsControl ItemsSource="{Binding TodoItems}"/>
         </ScrollViewer>
-        <TextBox Grid.Row="2"
-                 Text="{Binding NewItemContent}"
-                 Watermark="Add a new Item">
-            <TextBox.InnerRightContent>
-                <Button Command="{Binding AddItemCommand}">
-                    <Image Source="avares://PasswordManager.Desktop/Assets/icons8-accept-64.png"
-                           Width="24"
-                           Height="24"></Image>
-                </Button>
-            </TextBox.InnerRightContent>
-            <TextBox.KeyBindings>
-                <KeyBinding Command="{Binding AddItemCommand}"
-                            Gesture="Enter"/>
-            </TextBox.KeyBindings>
-        </TextBox>
+        <Grid Grid.Row="2" RowDefinitions="Auto,Auto,Auto,Auto,Auto">
+            <TextBox Grid.Row="0"
+                     Text="{Binding NewItemUsername}"
+                     Watermark="Add a new Username">
+            </TextBox>
+            <TextBox Grid.Row="1"
+                     Text="{Binding NewItemPassword}"
+                     Watermark="Add a new Password">
+            </TextBox>
+            <TextBox Grid.Row="2"
+                     Text="{Binding NewItemApplication}"
+                     Watermark="Add a new Application">
+            </TextBox>
+            <TextBox Grid.Row="3"
+                     Text="{Binding NewItemTitle}"
+                     Watermark="Add a new Title">
+            </TextBox>
+            <Button Grid.Row="4" Command="{Binding AddItemCommand}">
+                Add new entry!
+            </Button>
+        </Grid>
+        
+        
     </Grid>
     
 </Window>
+
+
+
+<!-- <TextBox.InnerRightContent> -->
+<!--     <Button Command="{Binding AddItemCommand}"> -->
+<!--         <Image Source="avares://PasswordManager.Desktop/Assets/icons8-accept-64.png" -->
+<!--                Width="24" -->
+<!--                Height="24"></Image> -->
+<!--     </Button> -->
+<!-- </TextBox.InnerRightContent> -->
+
+
+<!-- <TextBox.KeyBindings> -->
+<!--     <KeyBinding Command="{Binding AddItemCommand}" -->
+<!--                 Gesture="Enter"/> -->
+<!-- </TextBox.KeyBindings> -->
