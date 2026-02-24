@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace PasswordManager.Desktop.Views;
 
-public partial class TodoItemView : UserControl
+public partial class TodoItemDetailView : UserControl
 {
-    public TodoItemView()
+    public TodoItemDetailView()
     {
         InitializeComponent();
     }

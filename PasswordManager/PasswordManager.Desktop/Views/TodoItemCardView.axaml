@@ -4,18 +4,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:PasswordManager.Desktop.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="PasswordManager.Desktop.Views.TodoItemView"
-             x:DataType="viewModels:TodoItemViewModel">
+             x:Class="PasswordManager.Desktop.Views.TodoItemCardView"
+             x:DataType="viewModels:TodoItemCardViewModel">
     
-    <!-- ToDo: Afisat Titlul obicetelor mare, iar user ca sub-text sub titlu, butonul sa fie la dreapta de ambele -->
+    <!-- Bugs detected: When app closed from IDE, does not have data persistency -->
     
-    <Grid ColumnDefinitions="Auto, Auto, Auto">
-        <TextBlock Grid.Column="0" Text="{Binding Title}"/>
-        <TextBlock Grid.Column="1" Text="{Binding Username}"/>
-        <Button Grid.Column="2" Command="{Binding RemoveCommand}">
+    <Grid ColumnDefinitions="300, Auto, *">
+        
+        <Grid Grid.Column="0" RowDefinitions="Auto, Auto">
+            <TextBlock Grid.Row="0" FontWeight="Bold" FontSize="20" Grid.Column="0" Text="{Binding Title}"/>
+            <TextBlock Grid.Row="1" FontStyle="Italic" Text="{Binding Username}"/>
+        </Grid>
+        
+        <Button Grid.Column="1" Command="{Binding RemoveCommand}">
             <Image Source="avares://PasswordManager.Desktop/Assets/icons8-delete-64.png"
                    Width="24"
                    Height="24"></Image>
+            
         </Button>
     </Grid>
 </UserControl>

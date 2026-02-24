@@ -3,6 +3,7 @@
         xmlns:vm="using:PasswordManager.Desktop.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:PasswordManager.Desktop.Views"
         mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
         x:Class="PasswordManager.Desktop.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
@@ -19,9 +20,14 @@
         <TextBlock Grid.Row="0"
                    Classes="h1"
                    Text="My Todo-List"/>
-        <ScrollViewer Grid.Row="1">
-            <ItemsControl ItemsSource="{Binding TodoItems}"/>
-        </ScrollViewer>
+        <Grid Grid.Row="1" ColumnDefinitions="600, Auto">
+            
+            <ScrollViewer Grid.Column="0">
+                <ItemsControl ItemsSource="{Binding TodoItems}"/>
+            </ScrollViewer>
+            
+            <views:TodoItemDetailView Grid.Column="1" DataContext="NewItemTodoItem"/>
+        </Grid>
         <Grid Grid.Row="2" RowDefinitions="Auto,Auto,Auto,Auto,Auto">
             <TextBox Grid.Row="0"
                      Text="{Binding NewItemUsername}"

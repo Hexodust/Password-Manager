@@ -39,7 +39,7 @@ public partial class App : Application
     private async Task InitTodos()
     {
         var items = (await FileService.LoadFromFile())
-            .Select(item => new TodoItemViewModel(item))
+            .Select(item => new TodoItemCardViewModel(item))
             .ToList();
         _mainWindowViewModel.TodoItems.AddRange(items);
     }

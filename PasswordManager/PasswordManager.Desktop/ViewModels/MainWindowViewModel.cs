@@ -19,14 +19,18 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(AddItemCommand))]
     private string _newItemTitle;
+    [ObservableProperty]
+    private TodoItemDetailViewModel? _newItemTodoItem;
     
-    public ObservableCollection<TodoItemViewModel> TodoItems { get; } = new();
+    public ObservableCollection<TodoItemCardViewModel> TodoItems { get; } = new();
     public bool CanAddItem => !string.IsNullOrWhiteSpace(NewItemPassword) && !string.IsNullOrWhiteSpace(NewItemTitle);
+    
+    // Todo: Add constructor and dummy data for NewItemTodoItem
     
     [RelayCommand(CanExecute = nameof(CanAddItem))]
     private void AddItem()
     {
-        TodoItems.Add(new TodoItemViewModel()
+        TodoItems.Add(new TodoItemCardViewModel()
         {
             Username = NewItemUsername,
             Password = NewItemPassword,
@@ -40,9 +44,9 @@ public partial class MainWindowViewModel : ViewModelBase
         NewItemApplication = null;
     }
 
-    private void RemoveItem(TodoItemViewModel item)
+    private void RemoveItem(TodoItemCardViewModel itemCard)
     {
-        TodoItems.Remove(item);
+        TodoItems.Remove(itemCard);
     }
 
 }

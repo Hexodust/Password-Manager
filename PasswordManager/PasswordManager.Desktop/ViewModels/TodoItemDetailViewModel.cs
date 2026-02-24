@@ -5,7 +5,7 @@ using PasswordManager.Desktop.Models;
 
 namespace PasswordManager.Desktop.ViewModels;
 
-public partial class TodoItemViewModel : ViewModelBase
+public partial class TodoItemDetailViewModel : ViewModelBase
 {
     // Username; Pass; Website/App; Title
     [ObservableProperty]
@@ -17,14 +17,14 @@ public partial class TodoItemViewModel : ViewModelBase
     [ObservableProperty]
     private string _title;
 
-    public Action<TodoItemViewModel> RemoveItem { get; init; }
+    public Action<TodoItemDetailViewModel> RemoveItem { get; init; }
     
-    public TodoItemViewModel()
+    public TodoItemDetailViewModel()
     {
         
     }
 
-    public TodoItemViewModel(TodoItem todoItem)
+    public TodoItemDetailViewModel(TodoItem todoItem)
     {
         Username = todoItem.Username;
         Password = todoItem.Password;
